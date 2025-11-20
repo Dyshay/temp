@@ -1,6 +1,6 @@
 # .NET vs Scala Play - Comparative Benchmark Suite
 
-Ce projet compare les performances entre **.NET 8.0** et **Scala 2.13 avec Play Framework** à travers plusieurs dimensions :
+Ce projet compare les performances entre **.NET 10** et **Scala 2.13 avec Play Framework** à travers plusieurs dimensions :
 
 - ⏱️ **Temps de compilation**
 - 📦 **Taille des packages**
@@ -81,8 +81,8 @@ Les deux applications implémentent les mêmes endpoints pour assurer une compar
 
 #### .NET
 ```bash
-# Installer .NET 8.0 SDK
-# https://dotnet.microsoft.com/download/dotnet/8.0
+# Installer .NET 10 SDK (LTS)
+# https://dotnet.microsoft.com/download/dotnet/10.0
 ```
 
 #### Scala Play

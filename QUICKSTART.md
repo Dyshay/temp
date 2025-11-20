@@ -7,10 +7,10 @@ Ce guide vous permet de lancer rapidement les benchmarks pour comparer .NET et S
 ### Ubuntu/Debian
 
 ```bash
-# Installer .NET 8.0 SDK
+# Installer .NET 10 SDK (LTS)
 wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
 chmod +x dotnet-install.sh
-./dotnet-install.sh --channel 8.0
+./dotnet-install.sh --channel 10.0
 export PATH="$PATH:$HOME/.dotnet"
 
 # Installer SBT (pour Scala)
@@ -46,7 +46,7 @@ brew install apache2-utils jq
 ```bash
 # Vérifier .NET
 dotnet --version
-# Devrait afficher : 8.0.x
+# Devrait afficher : 10.0.x
 
 # Vérifier SBT
 sbt --version
