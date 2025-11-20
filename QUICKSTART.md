@@ -2,6 +2,8 @@
 
 Ce guide vous permet de lancer rapidement les benchmarks pour comparer .NET et Scala Play.
 
+> **📱 Utilisateurs macOS x64** : Pour des instructions détaillées adaptées à macOS (installation de GNU coreutils, gestion des limites, optimisations), consultez le [Guide macOS complet](docs/MACOS_GUIDE.md).
+
 ## Installation Rapide des Prérequis
 
 ### Ubuntu/Debian

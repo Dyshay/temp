@@ -79,6 +79,8 @@ Les deux applications implémentent les mêmes endpoints pour assurer une compar
 
 ### Pour exécuter les applications localement :
 
+> **📱 Utilisateurs macOS** : Consultez le [Guide macOS complet](docs/MACOS_GUIDE.md) pour les instructions d'installation spécifiques et les ajustements nécessaires (GNU coreutils, etc.)
+
 #### .NET
 ```bash
 # Installer .NET 10 SDK (LTS)
