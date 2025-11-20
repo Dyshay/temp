@@ -47,7 +47,7 @@ test_dotnet_startup() {
     local pid=$!
 
     # Measure time to first successful response
-    local startup_time=$(measure_startup "http://localhost:5000/api/hello")
+    local startup_time=$(measure_startup "http://127.0.0.1:5000/api/hello")
 
     # Stop the application
     kill $pid 2>/dev/null || true
@@ -72,7 +72,7 @@ test_scala_startup() {
     local pid=$!
 
     # Measure time to first successful response
-    local startup_time=$(measure_startup "http://localhost:9000/api/hello")
+    local startup_time=$(measure_startup "http://127.0.0.1:9000/api/hello")
 
     # Stop the application
     kill $pid 2>/dev/null || true

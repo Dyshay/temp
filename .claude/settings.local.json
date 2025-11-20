@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(tasklist:*)",
+      "Bash(powershell -Command \"Get-Process -Id 35604 | Select-Object Name, Id\")",
+      "Bash(powershell -Command \"Stop-Process -Id 35604 -Force\")",
+      "Bash(taskkill:*)",
+      "Bash(powershell -Command \"taskkill /F /PID 35604\")",
+      "Bash(powershell -Command:*)",
+      "Bash(powershell -ExecutionPolicy Bypass -Command \"netstat -ano | Select-String '':5000'' | Select-String ''LISTENING'' | ForEach-Object { $parts = $_-split ''\\s+'' | Where-Object { $_-ne '''' }; $pid = $parts[-1]; if ($pid -match ''^\\d+$'') { Write-Host ''Killing process'' $pid; Stop-Process -Id $pid -Force -ErrorAction SilentlyContinue } }\")",
+      "Bash(powershell -ExecutionPolicy Bypass -File kill_ports.ps1)",
+      "Bash(powershell -ExecutionPolicy Bypass -File benchmark_startup.ps1)",
+      "Bash(Start-Sleep -Seconds 10)",
+      "Bash(curl:*)",
+      "Bash(./target/universal/stage/bin/scala-play-api.bat)",
+      "WebFetch(domain:www.playframework.com)",
+      "Bash(powershell -ExecutionPolicy Bypass -File start-play.ps1:*)",
+      "Bash(sbt stage:*)",
+      "Bash(cmd /c sbt stage)",
+      "Bash(cmd /c \"rmdir /s /q target\\universal\\stage 2>nul\")",
+      "Bash(timeout /t 60)",
+      "Bash(nul)",
+      "Bash(del \"C:\\Users\\dyl_c\\IdeaProjects\\temp\\scala-play-api\\conf\\production.conf\")",
+      "Bash(cmd /c sbt clean:*)",
+      "Bash(timeout /t 10)",
+      "Bash(powershell:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

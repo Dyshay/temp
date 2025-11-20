@@ -9,7 +9,7 @@ builder.Services.ConfigureHttpJsonOptions(options =>
 var app = builder.Build();
 
 // Simple GET endpoint
-app.MapGet("/api/hello", () => new { message = "Hello from .NET!", timestamp = DateTime.UtcNow });
+app.MapGet("/api/hello", () => new { message = "Hello from .NET!" });
 
 // GET with parameter
 app.MapGet("/api/echo/{text}", (string text) => new { echo = text, length = text.Length });

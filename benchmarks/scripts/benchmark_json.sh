@@ -74,12 +74,12 @@ dotnet ./publish/DotNetApi.dll > /dev/null 2>&1 &
 DOTNET_PID=$!
 echo "  Started with PID: $DOTNET_PID"
 
-wait_for_service "http://localhost:5000/api/hello"
+wait_for_service "http://127.0.0.1:5000/api/hello"
 
 # Warmup .NET
 echo "  Warming up..."
 for i in $(seq 1 $WARMUP_REQUESTS); do
-    curl -s -X POST "http://localhost:5000/api/json-benchmark" \
+    curl -s -X POST "http://127.0.0.1:5000/api/json-benchmark" \
         -H "Content-Type: application/json" \
         -d '{"objectCount":100}' > /dev/null
 done
@@ -99,7 +99,7 @@ for count in "${OBJECT_COUNTS[@]}"; do
     runs=5
 
     for run in $(seq 1 $runs); do
-        result=$(benchmark_json "http://localhost:5000/api/json-benchmark" $count)
+        result=$(benchmark_json "http://127.0.0.1:5000/api/json-benchmark" $count)
         serialize=$(echo "$result" | jq -r '.serializationTimeMs')
         deserialize=$(echo "$result" | jq -r '.deserializationTimeMs')
         size=$(echo "$result" | jq -r '.jsonSizeBytes')
@@ -137,12 +137,12 @@ cd "$PROJECT_ROOT/scala-play-api"
 SCALA_PID=$!
 echo "  Started with PID: $SCALA_PID"
 
-wait_for_service "http://localhost:9000/api/hello"
+wait_for_service "http://127.0.0.1:9000/api/hello"
 
 # Warmup Scala Play
 echo "  Warming up..."
 for i in $(seq 1 $WARMUP_REQUESTS); do
-    curl -s -X POST "http://localhost:9000/api/json-benchmark" \
+    curl -s -X POST "http://127.0.0.1:9000/api/json-benchmark" \
         -H "Content-Type: application/json" \
         -d '{"objectCount":100}' > /dev/null
 done
@@ -162,7 +162,7 @@ for count in "${OBJECT_COUNTS[@]}"; do
     runs=5
 
     for run in $(seq 1 $runs); do
-        result=$(benchmark_json "http://localhost:9000/api/json-benchmark" $count)
+        result=$(benchmark_json "http://127.0.0.1:9000/api/json-benchmark" $count)
         serialize=$(echo "$result" | jq -r '.serializationTimeMs')
         deserialize=$(echo "$result" | jq -r '.deserializationTimeMs')
         size=$(echo "$result" | jq -r '.jsonSizeBytes')

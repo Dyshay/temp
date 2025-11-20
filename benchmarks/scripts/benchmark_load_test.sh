@@ -167,10 +167,10 @@ dotnet ./publish/DotNetApi.dll > /dev/null 2>&1 &
 DOTNET_PID=$!
 echo "  Started with PID: $DOTNET_PID"
 
-wait_for_service "http://localhost:5000/api/hello"
+wait_for_service "http://127.0.0.1:5000/api/hello"
 
 # Test .NET
-DOTNET_RESULTS=$(progressive_load_test ".NET" "http://localhost:5000")
+DOTNET_RESULTS=$(progressive_load_test ".NET" "http://127.0.0.1:5000")
 
 # Stop .NET
 echo ""
@@ -187,10 +187,10 @@ cd "$PROJECT_ROOT/scala-play-api"
 SCALA_PID=$!
 echo "  Started with PID: $SCALA_PID"
 
-wait_for_service "http://localhost:9000/api/hello"
+wait_for_service "http://127.0.0.1:9000/api/hello"
 
 # Test Scala Play
-SCALA_RESULTS=$(progressive_load_test "Scala Play" "http://localhost:9000")
+SCALA_RESULTS=$(progressive_load_test "Scala Play" "http://127.0.0.1:9000")
 
 # Stop Scala Play
 echo ""

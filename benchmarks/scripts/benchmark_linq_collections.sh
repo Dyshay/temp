@@ -62,13 +62,13 @@ dotnet ./publish/DotNetApi.dll > /dev/null 2>&1 &
 DOTNET_PID=$!
 echo "  Started with PID: $DOTNET_PID"
 
-wait_for_service "http://localhost:5000/api/hello"
+wait_for_service "http://127.0.0.1:5000/api/hello"
 
 # Warmup .NET
 echo "  Warming up..."
 for i in $(seq 1 $WARMUP_REQUESTS); do
-    curl -s "http://localhost:5000/api/linq-benchmark/1000" > /dev/null
-    curl -s "http://localhost:5000/api/collection-benchmark/1000" > /dev/null
+    curl -s "http://127.0.0.1:5000/api/linq-benchmark/1000" > /dev/null
+    curl -s "http://127.0.0.1:5000/api/collection-benchmark/1000" > /dev/null
 done
 sleep 2
 
@@ -86,7 +86,7 @@ for size in "${DATA_SIZES[@]}"; do
     runs=5
 
     for run in $(seq 1 $runs); do
-        result=$(curl -s "http://localhost:5000/api/linq-benchmark/$size")
+        result=$(curl -s "http://127.0.0.1:5000/api/linq-benchmark/$size")
         linq_time=$(echo "$result" | jq -r '.linqTimeMs')
         loop_time=$(echo "$result" | jq -r '.forLoopTimeMs')
         complex_time=$(echo "$result" | jq -r '.complexLinqTimeMs')
@@ -127,7 +127,7 @@ for size in "${DATA_SIZES[@]}"; do
     runs=5
 
     for run in $(seq 1 $runs); do
-        result=$(curl -s "http://localhost:5000/api/collection-benchmark/$size")
+        result=$(curl -s "http://127.0.0.1:5000/api/collection-benchmark/$size")
 
         list_add=$(echo "$result" | jq -r '.list.addTimeMs')
         list_search=$(echo "$result" | jq -r '.list.searchTimeMs')
@@ -175,13 +175,13 @@ cd "$PROJECT_ROOT/scala-play-api"
 SCALA_PID=$!
 echo "  Started with PID: $SCALA_PID"
 
-wait_for_service "http://localhost:9000/api/hello"
+wait_for_service "http://127.0.0.1:9000/api/hello"
 
 # Warmup Scala Play
 echo "  Warming up..."
 for i in $(seq 1 $WARMUP_REQUESTS); do
-    curl -s "http://localhost:9000/api/linq-benchmark/1000" > /dev/null
-    curl -s "http://localhost:9000/api/collection-benchmark/1000" > /dev/null
+    curl -s "http://127.0.0.1:9000/api/linq-benchmark/1000" > /dev/null
+    curl -s "http://127.0.0.1:9000/api/collection-benchmark/1000" > /dev/null
 done
 sleep 2
 
@@ -199,7 +199,7 @@ for size in "${DATA_SIZES[@]}"; do
     runs=5
 
     for run in $(seq 1 $runs); do
-        result=$(curl -s "http://localhost:9000/api/linq-benchmark/$size")
+        result=$(curl -s "http://127.0.0.1:9000/api/linq-benchmark/$size")
         func_time=$(echo "$result" | jq -r '.functionalTimeMs')
         loop_time=$(echo "$result" | jq -r '.forLoopTimeMs')
         complex_time=$(echo "$result" | jq -r '.complexFunctionalTimeMs')
@@ -240,7 +240,7 @@ for size in "${DATA_SIZES[@]}"; do
     runs=5
 
     for run in $(seq 1 $runs); do
-        result=$(curl -s "http://localhost:9000/api/collection-benchmark/$size")
+        result=$(curl -s "http://127.0.0.1:9000/api/collection-benchmark/$size")
 
         list_add=$(echo "$result" | jq -r '.list.addTimeMs')
         list_search=$(echo "$result" | jq -r '.list.searchTimeMs')

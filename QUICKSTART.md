@@ -4,7 +4,34 @@ Ce guide vous permet de lancer rapidement les benchmarks pour comparer .NET et S
 
 > **📱 Utilisateurs macOS x64** : Pour des instructions détaillées adaptées à macOS (installation de GNU coreutils, gestion des limites, optimisations), consultez le [Guide macOS complet](docs/MACOS_GUIDE.md).
 
+> **💻 Utilisateurs Windows** : Pour des instructions détaillées adaptées à Windows (installation via Chocolatey, scripts PowerShell), consultez le [Guide Windows complet](docs/WINDOWS_GUIDE.md).
+
 ## Installation Rapide des Prérequis
+
+### Windows (Installation Automatique) ⚡
+
+**Option 1 : Installation automatique (Recommandé)**
+
+Ouvrez PowerShell en tant qu'**Administrateur** et exécutez :
+
+```powershell
+# Depuis la racine du projet
+.\install-windows-tools.ps1
+```
+
+Ce script installe automatiquement :
+- Chocolatey (gestionnaire de paquets)
+- .NET 10 SDK
+- Java (OpenJDK 17)
+- SBT (Scala Build Tool)
+- jq (traitement JSON)
+- Git
+
+**Option 2 : Installation manuelle**
+
+Consultez le [Guide Windows complet](docs/WINDOWS_GUIDE.md) pour les instructions détaillées.
+
+---
 
 ### Ubuntu/Debian
 
@@ -45,6 +72,7 @@ brew install apache2-utils jq
 
 ### Étape 1 : Vérifier les installations
 
+**Linux/macOS :**
 ```bash
 # Vérifier .NET
 dotnet --version
@@ -59,8 +87,24 @@ ab -V
 # Devrait afficher la version d'Apache Bench
 ```
 
+**Windows PowerShell :**
+```powershell
+# Vérifier .NET
+dotnet --version
+# Devrait afficher : 10.0.x
+
+# Vérifier SBT
+sbt --version
+# Devrait afficher la version de SBT
+
+# Vérifier jq
+jq --version
+# Devrait afficher la version de jq
+```
+
 ### Étape 2 : Cloner et préparer le projet
 
+**Linux/macOS :**
 ```bash
 # Si vous avez cloné le repo
 cd /chemin/vers/le/projet
@@ -69,8 +113,17 @@ cd /chemin/vers/le/projet
 chmod +x benchmarks/scripts/*.sh
 ```
 
+**Windows PowerShell :**
+```powershell
+# Naviguer vers le projet
+cd C:\chemin\vers\le\projet
+
+# Les scripts PowerShell sont déjà prêts à l'emploi
+```
+
 ### Étape 3 : Lancer les benchmarks
 
+**Linux/macOS :**
 ```bash
 # Lancer tous les benchmarks (15-30 minutes)
 ./benchmarks/scripts/run_all_benchmarks.sh
@@ -85,6 +138,26 @@ chmod +x benchmarks/scripts/*.sh
 
 # Performance runtime uniquement (10-15 min)
 ./benchmarks/scripts/benchmark_runtime.sh
+```
+
+**Windows PowerShell :**
+```powershell
+# Lancer tous les benchmarks (30-45 minutes)
+.\benchmarks\scripts\run_all_benchmarks.ps1
+
+# OU lancer les benchmarks individuellement
+
+# Compilation uniquement (5-10 min)
+.\benchmarks\scripts\benchmark_compilation.ps1
+
+# Taille des packages uniquement (2-5 min)
+.\benchmarks\scripts\benchmark_package_size.ps1
+
+# Temps de démarrage (5-10 min)
+.\benchmarks\scripts\benchmark_startup.ps1
+
+# Performance runtime uniquement (10-15 min)
+.\benchmarks\scripts\benchmark_runtime.ps1
 ```
 
 ## Voir les Résultats

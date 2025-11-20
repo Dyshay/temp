@@ -81,6 +81,8 @@ Les deux applications implémentent les mêmes endpoints pour assurer une compar
 
 > **📱 Utilisateurs macOS** : Consultez le [Guide macOS complet](docs/MACOS_GUIDE.md) pour les instructions d'installation spécifiques et les ajustements nécessaires (GNU coreutils, etc.)
 
+> **💻 Utilisateurs Windows** : Consultez le [Guide Windows complet](docs/WINDOWS_GUIDE.md) pour les instructions d'installation spécifiques et l'utilisation des scripts PowerShell
+
 #### .NET
 ```bash
 # Installer .NET 10 SDK (LTS)
@@ -115,6 +117,7 @@ sudo apt-get install -y \
 ### 1. Exécuter les applications individuellement
 
 #### .NET
+**Linux/macOS :**
 ```bash
 cd dotnet-api
 dotnet restore
@@ -122,8 +125,24 @@ dotnet run
 # L'application démarre sur http://localhost:5000
 ```
 
+**Windows PowerShell :**
+```powershell
+cd dotnet-api
+dotnet restore
+dotnet run
+# L'application démarre sur http://localhost:5000
+```
+
 #### Scala Play
+**Linux/macOS :**
 ```bash
+cd scala-play-api
+sbt run
+# L'application démarre sur http://localhost:9000
+```
+
+**Windows PowerShell :**
+```powershell
 cd scala-play-api
 sbt run
 # L'application démarre sur http://localhost:9000
@@ -131,9 +150,16 @@ sbt run
 
 ### 2. Exécuter tous les benchmarks
 
+**Linux/macOS :**
 ```bash
 # Depuis la racine du projet
 ./benchmarks/scripts/run_all_benchmarks.sh
+```
+
+**Windows PowerShell :**
+```powershell
+# Depuis la racine du projet
+.\benchmarks\scripts\run_all_benchmarks.ps1
 ```
 
 Ce script va :

@@ -12,8 +12,7 @@ class ApiController @Inject()(val controllerComponents: ControllerComponents) ex
   // Simple GET endpoint
   def hello = Action {
     Ok(Json.obj(
-      "message" -> "Hello from Scala Play!",
-      "timestamp" -> Instant.now().toString
+      "message" -> "Hello from Scala Play!"
     ))
   }
 
