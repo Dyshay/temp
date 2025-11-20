@@ -1,0 +1,8 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+
+GET     /api/hello              controllers.ApiController.hello
+GET     /api/echo/:text         controllers.ApiController.echo(text: String)
+POST    /api/data               controllers.ApiController.postData
+GET     /api/compute/:iterations controllers.ApiController.compute(iterations: Int)
+GET     /api/memory/:sizeMb     controllers.ApiController.memory(sizeMb: Int)

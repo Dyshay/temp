@@ -1,0 +1,36 @@
+# .NET
+dotnet-api/bin/
+dotnet-api/obj/
+dotnet-api/publish/
+*.dll
+*.exe
+*.pdb
+
+# Scala / SBT
+scala-play-api/target/
+scala-play-api/project/target/
+scala-play-api/project/project/
+scala-play-api/.bsp/
+*.class
+*.log
+*.jar
+
+# Benchmark results
+benchmarks/results/*.json
+benchmarks/results/*.md
+benchmarks/results/*.txt
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
