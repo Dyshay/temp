@@ -160,13 +160,66 @@ Ce script va :
 ./benchmarks/scripts/benchmark_runtime.sh
 ```
 
+### 4. Tests de Throughput Avancés (Req/Sec) 🔥
+
+Pour une analyse détaillée des performances en **requêtes par seconde** :
+
+```bash
+# Suite complète de tests de throughput
+./benchmarks/scripts/run_throughput_suite.sh
+```
+
+Cette suite exécute :
+- **Test multi-concurrence** : Mesure avec 1, 10, 50, 100, 200 connexions simultanées
+- **Test de charge progressive** : Trouve le point de rupture (jusqu'à 500 connexions)
+- **Analyse détaillée** : Génère un rapport complet avec recommandations
+
+**Durée estimée** : 20-30 minutes
+
+**Tests individuels disponibles** :
+```bash
+# Test de throughput à différents niveaux de concurrence
+./benchmarks/scripts/benchmark_throughput.sh
+
+# Test de charge progressive (find breaking point)
+./benchmarks/scripts/benchmark_load_test.sh
+
+# Générer l'analyse des résultats
+./benchmarks/scripts/analyze_throughput.sh
+```
+
+**Résultats** :
+- `throughput_results.json` : Métriques détaillées par endpoint et concurrence
+- `load_test_results.json` : Résultats du test de charge progressive
+- `throughput_analysis.md` : **Rapport d'analyse complet**
+
+**Métriques mesurées** :
+- Requêtes par seconde (RPS) max et moyen
+- Latence (P50, P75, P90, P95, P99)
+- Taux d'erreur sous charge
+- Point de rupture et charge maximale soutenable
+- Performance par type d'endpoint (simple, CPU-intensif, etc.)
+
+📖 **Guide complet** : Voir [docs/THROUGHPUT_TESTING.md](docs/THROUGHPUT_TESTING.md) pour des instructions détaillées
+
 ## Résultats
 
 Après l'exécution des benchmarks, les résultats sont disponibles dans `benchmarks/results/` :
 
+**Benchmarks de base** :
 - **compilation_results.json** - Temps de compilation détaillés
 - **package_size_results.json** - Tailles des packages
+- **startup_results.json** - Temps de démarrage (cold/warm/hot)
 - **runtime_results.json** - Performance d'exécution et RAM
+- **json_results.json** - Sérialisation/désérialisation JSON
+- **linq_collections_results.json** - LINQ vs Collections
+
+**Tests de throughput** :
+- **throughput_results.json** - Métriques détaillées req/sec
+- **load_test_results.json** - Test de charge progressive
+- **throughput_analysis.md** - Analyse complète avec recommandations
+
+**Rapports consolidés** :
 - **comprehensive_report.json** - Tous les résultats combinés
 - **comprehensive_report.md** - Rapport lisible en Markdown
 
