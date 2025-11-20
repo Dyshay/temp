@@ -29,3 +29,26 @@ object DataResponse {
     )
   }
 }
+
+case class AddressData(
+  street: String,
+  city: String,
+  zipCode: String,
+  country: String
+)
+
+object AddressData {
+  implicit val format: Format[AddressData] = Json.format[AddressData]
+}
+
+case class PersonData(
+  id: Int,
+  name: String,
+  email: String,
+  age: Int,
+  address: AddressData
+)
+
+object PersonData {
+  implicit val format: Format[PersonData] = Json.format[PersonData]
+}
